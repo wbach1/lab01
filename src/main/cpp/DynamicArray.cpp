@@ -25,26 +25,33 @@ namespace csc232 {
 
     // TODO: Task 1a - Implement me accordingly
     template<typename T>
-    DynamicArray<T>::DynamicArray() {
+    DynamicArray<T>::DynamicArray() : data_{new T[DEFAULT_CAPACITY]}, size_{0}, capacity_{DEFAULT_CAPACITY}{
 
     }
 
     // TODO: Task 1b - Free resources accordingly
     template<typename T>
     DynamicArray<T>::~DynamicArray() {
-
+        delete[] data_;
     }
 
     // TODO: Task 1c - Implement me accordingly
     template<typename T>
     DynamicArray<T>::DynamicArray(const DynamicArray &src) {
-
+        data_ = new T[src.capacity()];
+        size_ = 10;
+        capacity_ = src.capacity();
+        for (size_t i = 0; i < size(); i++) {
+            data_[i] = src[i];
+        }
     }
 
 // TODO: Task 2 - Implement me accordingly
 template<typename T>
 DynamicArray<T> &DynamicArray<T>::operator=(const DynamicArray &rhs) {
-  return *this;
+    DynamicArray<T> data_ = rhs;
+    std::swap(*this, data_);
+    return *this;
 }
 
 template<typename T>

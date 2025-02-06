@@ -100,6 +100,16 @@ namespace csc232 {
     template<typename T>
     DynamicArray<T> operator+(const DynamicArray<T> &lhs, const DynamicArray<T> &rhs) {
         // TODO: Task 3 - Implement me accordingly
+        arr = [lhs.capacity() + rhs.capacity()];
+        //lhs loop
+        for(size_t i = 0; i < lhs.size(); i++){
+            arr[i] = lhs[i];
+        }
+        //rhs loop
+        for(size_t i = 0; i < rhs.size(); i++){
+            arr[i + lhs.size()] = rhs[i];
+        }
+        new DynamicArray<T> arr [lhs.capacity() + rhs.capacity()];
         return DynamicArray<T>{};
     }
 
