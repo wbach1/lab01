@@ -99,8 +99,19 @@ namespace csc232 {
      */
     template<typename T>
     DynamicArray<T> operator+(const DynamicArray<T> &lhs, const DynamicArray<T> &rhs) {
-        // TODO: Task 3 - Implement me accordingly
-        return DynamicArray<T>{};
+        size_t newCap = lhs.capacity_ + rhs.capacity_;
+        size_t newSize = lhs.size_ + rhs.size_;
+
+        DynamicArray<T> newArr(newCap);
+
+        for(size_t i = 0; i < lhs.size_; i++){
+            newArr[i] = lhs.data_[i];
+        }
+        for(size_t i = 0; i < rhs.size_; i++){
+            newArr[i + lhs.size_] = rhs.data_[i];
+        }
+
+        return newArr;
     }
 
     /**
